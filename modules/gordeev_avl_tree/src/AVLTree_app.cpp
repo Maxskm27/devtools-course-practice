@@ -25,7 +25,6 @@ std::string CLPApplication::operator()(int argc, const char** argv) {
   int i = 1;
 
   if (std::string(argv[i]) == "--test1" || std::string(argv[i]) == "-t1") {
-
     AVLTree avlTree = AVLTree();
     AVLTree::node p = AVLTree::node(atoi(argv[2]));
     AVLTree::node q = AVLTree::node(atoi(argv[3]));

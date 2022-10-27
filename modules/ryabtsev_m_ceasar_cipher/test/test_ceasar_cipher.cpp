@@ -1,8 +1,10 @@
 // Copyright 2022 Ryabtsev Maksim
 
 #include <gtest/gtest.h>
-#include "include/ceasar_cipher.h"
+
 #include <string>  // NOLINT
+
+#include "include/ceasar_cipher.h"
 
 TEST(CEASER_CIPHER_TEST, start) {
   CaesarCipher z;
@@ -40,6 +42,7 @@ TEST(CEASER_CIPHER_TEST, decoding_NO_FALL) {
   CaesarCipher z;
   string a = "WHVW";
   ASSERT_NO_THROW((z.decode(a, 3)));
+  EXPECT_EQ(z.decode(a, 3), "TEST");
 }
 
 TEST(CEASER_CIPHER_TEST, decoding_FALL) {

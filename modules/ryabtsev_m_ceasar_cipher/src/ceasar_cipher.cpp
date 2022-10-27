@@ -1,14 +1,15 @@
 // Copyright 2022 Ryabtsev Maksim
 #include "include/ceasar_cipher.h"
+
 #include <string>
 CaesarCipher::CaesarCipher() {
   input = "";
   offset = 0;
 }
 
-CaesarCipher::CaesarCipher(string input1, int offset1) {
-  input = input1;
-  offset = offset1;
+CaesarCipher::CaesarCipher(string input, int offset) {
+  this->input = input;
+  this->offset = offset;
 }
 
 string CaesarCipher::encode(string plain, int offset) {
@@ -19,7 +20,7 @@ string CaesarCipher::encode(string plain, int offset) {
     if (isalpha(plain[i])) {
       int num = toupper(plain[i]) - 'A';
       int nxt = (num + offset + 26) % 26;
-      result.append(alphabet[nxt]);
+      result += static_cast<char>('A' + nxt);
     } else {
       string s;
       s = plain[i];
@@ -36,7 +37,7 @@ string CaesarCipher::decode(string cipher, int offset) {
     if (isalpha(cipher[i])) {
       int num = toupper(cipher[i]) - 'A';
       int nxt = (num - offset + 26) % 26;
-      result.append(alphabet[nxt]);
+      result += static_cast<char>('A' + nxt);
     } else {
       string s;
       s = cipher[i];
